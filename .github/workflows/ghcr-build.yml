@@ -27,7 +27,7 @@ jobs:
     if: github.event.pull_request.head.repo.fork != true
     uses: ./.github/workflows/_build-image.yml
     with:
-      image: ghcr.io/openhands/openhands
+      image: ghcr.io/gokhanyigit06/goko-ai
       dockerfile: containers/app/Dockerfile
 
   build_enterprise:
