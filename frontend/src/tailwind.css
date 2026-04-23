@@ -11,17 +11,24 @@
 
 /* OLD TAILWIND STYLES */
 @theme {
-  --color-primary: #c9b974;
-  --color-logo: #cfb755;
-  --color-base: #0d0f11;
-  --color-base-secondary: #24272e;
-  --color-danger: #e76a5e;
-  --color-success: #a5e75e;
-  --color-basic: #9099ac;
-  --color-tertiary: #454545;
-  --color-tertiary-light: #b7bdc2;
-  --color-content: #ecedee;
-  --color-content-2: #f9fbfe;
+  /* Goko AI — Devin-style premium dark theme */
+  --color-primary: #818cf8;
+  --color-primary-hover: #6366f1;
+  --color-primary-glow: rgba(99, 102, 241, 0.35);
+  --color-logo: #818cf8;
+  --color-base: #080810;
+  --color-base-secondary: #0f0f1a;
+  --color-base-card: #111122;
+  --color-base-card-hover: #161630;
+  --color-danger: #f87171;
+  --color-success: #34d399;
+  --color-basic: #8b8fa8;
+  --color-tertiary: #1e1e38;
+  --color-tertiary-light: #a5a8c0;
+  --color-content: #e2e3f0;
+  --color-content-2: #f5f6ff;
+  --color-border: rgba(129, 140, 248, 0.15);
+  --color-border-hover: rgba(129, 140, 248, 0.35);
 }
 
 .button-base {
@@ -212,35 +219,180 @@
 }
 
 .loader {
-  background: #c9b974;
+  background: #818cf8;
   animation: l5 1s infinite linear alternate;
 }
 
 @keyframes l5 {
   0% {
     box-shadow:
-      20px 0 #c9b974,
-      -20px 0 rgba(201, 185, 116, 0.1);
-    background: #c9b974;
+      20px 0 #818cf8,
+      -20px 0 rgba(129, 140, 248, 0.1);
+    background: #818cf8;
   }
   33% {
     box-shadow:
-      20px 0 #c9b974,
-      -20px 0 rgba(201, 185, 116, 0.1);
-    background: rgba(201, 185, 116, 0.1);
+      20px 0 #818cf8,
+      -20px 0 rgba(129, 140, 248, 0.1);
+    background: rgba(129, 140, 248, 0.1);
   }
   66% {
     box-shadow:
-      20px 0 rgba(201, 185, 116, 0.1),
-      -20px 0 #c9b974;
-    background: rgba(201, 185, 116, 0.1);
+      20px 0 rgba(129, 140, 248, 0.1),
+      -20px 0 #818cf8;
+    background: rgba(129, 140, 248, 0.1);
   }
   100% {
     box-shadow:
-      20px 0 rgba(201, 185, 116, 0.1),
-      -20px 0 #c9b974;
-    background: #c9b974;
+      20px 0 rgba(129, 140, 248, 0.1),
+      -20px 0 #818cf8;
+    background: #818cf8;
   }
+}
+
+/* ===================== GOKO AI CUSTOM STYLES ===================== */
+
+/* Ambient glow orb background for home page */
+@keyframes goko-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+@keyframes goko-float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-12px) translateX(6px); }
+  66% { transform: translateY(6px) translateX(-8px); }
+}
+
+.goko-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.goko-orb-primary {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+  animation: goko-pulse 6s ease-in-out infinite, goko-float 12s ease-in-out infinite;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.goko-orb-secondary {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  animation: goko-pulse 8s ease-in-out infinite 2s, goko-float 16s ease-in-out infinite 3s;
+  bottom: 100px;
+  right: -100px;
+}
+
+.goko-orb-tertiary {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+  animation: goko-pulse 10s ease-in-out infinite 1s, goko-float 14s ease-in-out infinite 5s;
+  bottom: 200px;
+  left: -50px;
+}
+
+/* Goko AI logo animation */
+@keyframes goko-logo-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.4)); }
+  50% { filter: drop-shadow(0 0 16px rgba(129, 140, 248, 0.7)); }
+}
+
+.goko-logo {
+  animation: goko-logo-glow 3s ease-in-out infinite;
+}
+
+/* Gradient title text */
+.goko-gradient-title {
+  background: linear-gradient(135deg, #e2e3f0 0%, #818cf8 40%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: goko-title-shift 6s ease-in-out infinite;
+}
+
+@keyframes goko-title-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Glassmorphism card */
+.goko-glass-card {
+  background: rgba(17, 17, 34, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(129, 140, 248, 0.12);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.goko-glass-card:hover {
+  border-color: rgba(129, 140, 248, 0.28);
+  background: rgba(22, 22, 48, 0.75);
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.08);
+}
+
+/* Primary gradient button */
+.goko-btn-primary {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.goko-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  box-shadow: 0 6px 28px rgba(99, 102, 241, 0.45);
+  transform: translateY(-1px);
+}
+
+.goko-btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Sidebar pill active indicator */
+.goko-sidebar-icon {
+  color: #8b8fa8;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.goko-sidebar-icon:hover {
+  color: #818cf8;
+  transform: scale(1.1);
+}
+
+.goko-sidebar-icon.active {
+  color: #818cf8;
+}
+
+/* Status badge pills */
+.goko-badge {
+  background: rgba(129, 140, 248, 0.1);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  color: #818cf8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Docs link hover */
+.goko-docs-link:hover {
+  color: #a5b4fc !important;
 }
 
 /* Custom styling for xterm */
@@ -374,7 +526,7 @@
   -webkit-background-clip: text !important;
   background-clip: text !important;
   animation: shine 2s linear infinite;
-  background: radial-gradient(circle at center, rgb(24 24 27 / 85%), transparent) -200% 50% / 200% 100% no-repeat, #f4f4f5;
+  background: radial-gradient(circle at center, rgb(8 8 16 / 85%), transparent) -200% 50% / 200% 100% no-repeat, #e2e3f0;
 }
 
 /* CTA card gradient and shadow */

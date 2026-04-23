@@ -25,35 +25,44 @@ function HomeScreen() {
   return (
     <div
       data-testid="home-screen"
-      className="px-0 pt-4 bg-transparent h-full flex flex-col pt-[35px] overflow-y-auto rounded-xl lg:px-[42px] lg:pt-[42px] custom-scrollbar-always"
+      className="relative px-0 pt-4 h-full flex flex-col pt-[35px] overflow-y-auto rounded-xl lg:px-[42px] lg:pt-[42px] custom-scrollbar-always"
+      style={{ background: "transparent" }}
     >
-      <HomeHeader />
+      {/* Ambient glow orbs */}
+      <div className="goko-orb goko-orb-primary" />
+      <div className="goko-orb goko-orb-secondary" />
+      <div className="goko-orb goko-orb-tertiary" />
 
-      <div className="pt-[25px] flex justify-center">
-        <div
-          className="flex flex-col gap-5 px-6 sm:max-w-full sm:min-w-full md:flex-row lg:px-0 lg:max-w-[703px] lg:min-w-[703px]"
-          data-testid="home-screen-new-conversation-section"
-        >
-          <RepoConnector onRepoSelection={(repo) => setSelectedRepo(repo)} />
-          <NewConversation />
+      {/* Content above orbs */}
+      <div className="relative z-10 flex flex-col h-full">
+        <HomeHeader />
+
+        <div className="pt-[25px] flex justify-center">
+          <div
+            className="flex flex-col gap-5 px-6 sm:max-w-full sm:min-w-full md:flex-row lg:px-0 lg:max-w-[703px] lg:min-w-[703px]"
+            data-testid="home-screen-new-conversation-section"
+          >
+            <RepoConnector onRepoSelection={(repo) => setSelectedRepo(repo)} />
+            <NewConversation />
+          </div>
         </div>
+
+        <div className="pt-4 flex sm:justify-start md:justify-center">
+          <div
+            className="flex flex-col gap-5 px-6 md:flex-row min-w-full md:max-w-full lg:px-0 lg:max-w-[703px] lg:min-w-[703px]"
+            data-testid="home-screen-recent-conversations-section"
+          >
+            <RecentConversations />
+            <TaskSuggestions filterFor={selectedRepo} />
+          </div>
+        </div>
+
+        {isEnterpriseCloud && shouldShowCTA && (
+          <div className="fixed bottom-4 right-8 z-50 md:bottom-6 md:right-12">
+            <HomepageCTA setShouldShowCTA={setShouldShowCTA} />
+          </div>
+        )}
       </div>
-
-      <div className="pt-4 flex sm:justify-start md:justify-center">
-        <div
-          className="flex flex-col gap-5 px-6 md:flex-row min-w-full md:max-w-full lg:px-0 lg:max-w-[703px] lg:min-w-[703px]"
-          data-testid="home-screen-recent-conversations-section"
-        >
-          <RecentConversations />
-          <TaskSuggestions filterFor={selectedRepo} />
-        </div>
-      </div>
-
-      {isEnterpriseCloud && shouldShowCTA && (
-        <div className="fixed bottom-4 right-8 z-50 md:bottom-6 md:right-12">
-          <HomepageCTA setShouldShowCTA={setShouldShowCTA} />
-        </div>
-      )}
     </div>
   );
 }

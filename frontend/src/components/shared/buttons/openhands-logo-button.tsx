@@ -1,20 +1,24 @@
+/* eslint-disable i18next/no-literal-string */
 import { NavLink } from "react-router";
-import { useTranslation } from "react-i18next";
-import OpenHandsLogo from "#/assets/branding/openhands-logo.svg?react";
-import { I18nKey } from "#/i18n/declaration";
-import { StyledTooltip } from "#/components/shared/buttons/styled-tooltip";
+import GokoLogo from "#/assets/branding/goko-logo.svg?react";
 
 export function OpenHandsLogoButton() {
-  const { t } = useTranslation();
-
-  const tooltipText = t(I18nKey.BRANDING$OPENHANDS);
-  const ariaLabel = t(I18nKey.BRANDING$OPENHANDS_LOGO);
-
   return (
-    <StyledTooltip content={tooltipText}>
-      <NavLink to="/" aria-label={ariaLabel}>
-        <OpenHandsLogo width={46} height={30} />
-      </NavLink>
-    </StyledTooltip>
+    <NavLink
+      to="/"
+      aria-label="Goko AI Home"
+      className="flex flex-col items-center gap-1 group"
+    >
+      <div className="goko-logo">
+        <GokoLogo width={32} height={32} />
+      </div>
+      <span
+        className="text-[8px] font-bold tracking-[0.15em] uppercase hidden md:block"
+        style={{ color: "var(--color-primary)" }}
+      >
+        GOKO
+      </span>
+    </NavLink>
   );
 }
+/* eslint-enable i18next/no-literal-string */

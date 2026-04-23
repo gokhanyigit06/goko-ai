@@ -33,8 +33,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export const meta: MetaFunction = () => [
-  { title: "OpenHands" },
-  { name: "description", content: "Let's Start Building!" },
+  { title: "Goko AI — Your AI Software Engineer" },
+  {
+    name: "description",
+    content:
+      "Goko AI turns your ideas into working software. Powered by OpenHands.",
+  },
 ];
 
 export default function App() {
