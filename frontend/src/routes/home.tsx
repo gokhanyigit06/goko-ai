@@ -7,6 +7,7 @@ import { GitRepository } from "#/types/git";
 import { NewConversation } from "#/components/features/home/new-conversation/new-conversation";
 import { RecentConversations } from "#/components/features/home/recent-conversations/recent-conversations";
 import { HomepageCTA } from "#/components/features/home/homepage-cta";
+import { GokoModelPicker } from "#/components/features/home/goko-model-picker";
 import { isCTADismissed } from "#/utils/local-storage";
 import { useAppMode } from "#/hooks/use-app-mode";
 
@@ -37,7 +38,14 @@ function HomeScreen() {
       <div className="relative z-10 flex flex-col h-full">
         <HomeHeader />
 
-        <div className="pt-[25px] flex justify-center">
+        {/* Model Picker — quick switch between top 10 coding AIs */}
+        <div className="pt-6 flex justify-center">
+          <div className="w-full px-6 lg:px-0 lg:max-w-[703px]">
+            <GokoModelPicker />
+          </div>
+        </div>
+
+        <div className="pt-4 flex justify-center">
           <div
             className="flex flex-col gap-5 px-6 sm:max-w-full sm:min-w-full md:flex-row lg:px-0 lg:max-w-[703px] lg:min-w-[703px]"
             data-testid="home-screen-new-conversation-section"
